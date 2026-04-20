@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo">MyPortfolio</h2>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <img src="profile.jpg" class="profile-pic" alt="Profile Image">
+
+        <h1>Hi, I'm Big Shane 👋</h1>
+        <p class="typing"></p>
+
+        <button onclick="showMessage()">Say Hello</button>
+        <p id="msg"></p>
+
+    </section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+    <h2>My Projects</h2>
+
+    <div class="projects">
+
+        <!-- CALCULATOR -->
+        <div class="card">
+            <h3>Calculator</h3>
+
+            <input id="num1" placeholder="Num 1">
+            <input id="num2" placeholder="Num 2">
+
+            <button onclick="addNumbers()">Add</button>
+
+            <p id="result"></p>
+        </div>
+
+        <!-- TODO APP -->
+        <div class="card">
+            <h3>To-Do List</h3>
+
+            <input id="taskInput" placeholder="New task">
+            <button onclick="addTask()">Add</button>
+
+            <ul id="taskList"></ul>
+        </div>
+
+        <!-- QUOTE GENERATOR -->
+        <div class="card">
+            <h3>Quote Generator</h3>
+
+            <button onclick="newQuote()">Generate</button>
+            <p id="quote"></p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <h2>Contact:09033456640</h2>
+        <p>Email: omeizalawal9@gmail.com</p>
+    </section>
+
+<script>
+
+// ===== CALCULATOR =====
+function addNumbers() {
+    let a = Number(document.getElementById("num1").value);
+    let b = Number(document.getElementById("num2").value);
+
+    document.getElementById("result").innerText = "Result: " + (a + b);
+}
+
+// ===== TODO LIST =====
+function addTask() {
+    let taskInput = document.getElementById("taskInput");
+    let task = taskInput.value;
+
+    if (task === "") return;
+
+    let li = document.createElement("li");
+    li.innerText = task;
+
+    li.onclick = function () {
+        li.remove();
+    };
+
+    document.getElementById("taskList").appendChild(li);
+
+    taskInput.value = "";
+}
+
+// ===== QUOTE GENERATOR =====
+const quotes = [
+    "Keep going 🚀",
+    "Code. Learn. Repeat.",
+    "Small steps = big results",
+    "You are building your future 💡"
+];
+
+function newQuote() {
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    document.getElementById("quote").innerText = quotes[randomIndex];
+}
+
+// ===== HERO BUTTON (keep yours) =====
+function showMessage() {
+    document.getElementById("msg").innerText =
+    "Thanks for visiting my portfolio ✨";
+}
+
+</script>
+
+</body>
+</html>
